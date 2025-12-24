@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linpane Advocates | Professional Legal Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #c5a572;
+            --accent: #8b0000;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        nav ul li a.active {
+            color: var(--accent);
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #b5945f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: #a30000;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 80px 0;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        /* Advocates Section */
+        .advocates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .advocate-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .advocate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .advocate-img {
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .advocate-info {
+            padding: 25px;
+        }
+
+        .advocate-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .advocate-specialty {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .advocate-contact {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .contact-icon {
+            width: 30px;
+            color: var(--primary);
+        }
+
+        /* Appointment Form */
+        .appointment-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(197, 165, 114, 0.2);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-note {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials */
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo .logo-icon {
+            color: var(--secondary);
+        }
+
+        .footer-heading {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .page-content {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">⚖️</div>
+                <span>LINPANE ADVOCASY</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="advocates.html">Our Advocates</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="appointment.html" class="btn">Book Appointment</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Expert Legal Advocacy & Counsel</h1>
+            <p>With over 50 years of combined experience, our team of dedicated advocates provides exceptional legal representation across a wide range of practice areas. Your justice is our priority.</p>
+            <a href="appointment.html" class="btn btn-primary">Schedule a Consultation</a>
+        </div>
+    </section>
+
+    <!-- Main Content - Different pages would load here -->
+    <main id="pageContent">
+        <!-- Home Page Content -->
+        <section class="page-content">
+            <div class="container">
+                <h2 class="page-title">Welcome to LINPANE Advocates</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">We are a premier law firm specializing in civil litigation, corporate law, family law, and criminal defense. Our commitment to excellence and client-centered approach sets us apart in the legal field.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">👨‍⚖️</div>
+                        <h3>Criminal Defense</h3>
+                        <p>Expert defense representation for all criminal charges, from misdemeanors to felonies.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🏛️</div>
+                        <h3>Civil Litigation</h3>
+                        <p>Comprehensive representation in civil disputes, including contract and property cases.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">👨‍👩‍👧</div>
+                        <h3>Family Law</h3>
+                        <p>Compassionate handling of divorce, child custody, and other family-related legal matters.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">🏢</div>
+                        <h3>Corporate Law</h3>
+                        <p>Legal guidance for businesses including formation, contracts, and compliance issues.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Advocates Section -->
+        <section class="page-content" style="background-color: #f9f9f9;">
+            <div class="container">
+                <h2 class="page-title">Meet Our Lead Advocates</h2>
+                
+                <div class="advocates-grid">
+                    <div class="advocate-card">
+                        <img src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Advocate James Wilson" class="advocate-img">
+                        <div class="advocate-info">
+                            <h3 class="advocate-name">ADV. ASHISH LINPANE</h3>
+                            <p class="advocate-specialty">Senior Criminal Defense Attorney</p>
+                            <p>With over 25 years of experience, James has successfully defended over 500 clients in criminal cases, with a remarkable 92% success rate in trial outcomes.</p>
+                            
+                            <div class="advocate-contact">
+                                <div class="contact-item">
+                                    <span class="contact-icon">📧</span>
+                                    <span>ashishlinpane111.com</span>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-icon">📱</span>
+                                    <span>+91 9637790641</span>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-icon">🏢</span>
+                                    <span>Wardha, Courtroom</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="advocate-card">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Advocate Sarah Johnson" class="advocate-img">
+                        <div class="advocate-info">
+                            <h3 class="advocate-name">Sarah Johnson</h3>
+                            <p class="advocate-specialty">Family & Corporate Law Specialist</p>
+                            <p>Sarah brings 18 years of expertise in family and corporate law, known for her meticulous approach and compassionate client representation in sensitive matters.</p>
+                            
+                            <div class="advocate-contact">
+                                <div class="contact-item">
+                                    <span class="contact-icon">📧</span>
+                                    <span>sarah.johnson@legaleagle.com</span>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-icon">📱</span>
+                                    <span>+1 (555) 987-6543</span>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-icon">🏢</span>
+                                    <span>Office 205, East Wing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="advocates.html" class="btn">View All Advocates</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment Form Section -->
+        <section class="appointment-section">
+            <div class="container">
+                <h2 class="page-title">Schedule a Consultation</h2>
+                <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Fill out the form below to request an appointment with one of our advocates. We'll respond within 24 hours to confirm your consultation.</p>
+                
+                <div class="form-container">
+                    <!-- FormSubmit is used here - replace the email with your own -->
+                    <form action="https://formsubmit.co/lokhandeyuvraj@gmail.com" method="POST" id="appointmentForm">
+                        <!-- FormSubmit configuration -->
+                        <input type="hidden" name="_subject" value="New Appointment Request - LegalEagle">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="advocate">Preferred Advocate</label>
+                                <select id="advocate" name="advocate">
+                                    <option value="">Any Available Advocate</option>
+                                    <option value="James Wilson">James Wilson - Criminal Defense</option>
+                                    <option value="Sarah Johnson">Sarah Johnson - Family & Corporate Law</option>
+                                    <option value="Michael Rodriguez">Michael Rodriguez - Civil Litigation</option>
+                                    <option value="Emily Chen">Emily Chen - Intellectual Property</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address" placeholder="Street, City, State, ZIP">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="caseDetails">Case Details / Notes *</label>
+                            <textarea id="caseDetails" name="caseDetails" placeholder="Please provide a brief description of your legal issue..." required></textarea>
+                            <p class="form-note">Please do not include sensitive personal information in this form.</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preferredDate">Preferred Date</label>
+                            <input type="date" id="preferredDate" name="preferredDate">
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">Submit Appointment Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo-icon">⚖️</div>
+                        <span>LegalEagle</span>
+                    </div>
+                    <p>Providing expert legal counsel and representation since 1975. Our commitment to justice, integrity, and client success defines our practice.</p>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="advocates.html">Our Advocates</a></li>
+                        <li><a href="appointment.html">Book Appointment</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Justice Avenue, Legal District, City 10001</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@legaleagle.com</li>
+                        <li><i class="fas fa-clock" style="margin-right: 10px;"></i> Mon-Fri: 9am-6pm, Sat: 10am-2pm</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 LegalEagle Advocates. All rights reserved. | <a href="#" style="color: #aaa;">Privacy Policy</a> | <a href="#" style="color: #aaa;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Testimonial Slider (for testimonials page)
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        
+        if (testimonialSlides.length > 0) {
+            let currentSlide = 0;
+            
+            function showSlide(index) {
+                // Hide all slides
+                testimonialSlides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Remove active class from all dots
+                sliderDots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Show current slide and activate corresponding dot
+                testimonialSlides[index].classList.add('active');
+                sliderDots[index].classList.add('active');
+            }
+            
+            // Add click events to dots
+            sliderDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                });
+            });
+            
+            // Auto-slide every 5 seconds
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % testimonialSlides.length;
+                showSlide(currentSlide);
+            }, 5000);
+        }
+        
+        // Form validation and submission feedback
+        const appointmentForm = document.getElementById('appointmentForm');
+        
+        if (appointmentForm) {
+            appointmentForm.addEventListener('submit', function(e) {
+                // Simple validation
+                const phone = document.getElementById('phone').value;
+                const phonePattern = /^[\+]?[1-9][\d]{0,15}$/;
+                
+                if (!phonePattern.test(phone.replace(/[\s\-\(\)]/g, ''))) {
+                    alert('Please enter a valid phone number');
+                    e.preventDefault();
+                    return;
+                }
+                
+                // If validation passes, show a confirmation message
+                // In a real implementation, FormSubmit would handle the actual submission
+                alert('Thank you for your appointment request. We will contact you within 24 hours to confirm your consultation.');
+            });
+        }
+        
+        // Set minimum date for appointment to today
+        const preferredDate = document.getElementById('preferredDate');
+        if (preferredDate) {
+            const today = new Date().toISOString().split('T')[0];
+            preferredDate.min = today;
+        }
+    </script>
+</body>
+  </html>
+                               
